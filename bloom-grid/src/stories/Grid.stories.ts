@@ -1,4 +1,4 @@
-import type { StoryObj, Meta } from '@storybook/html';
+import type { StoryObj, Meta } from '@storybook/html-vite';
 import { attach } from '../index';
 
 const meta: Meta = {
