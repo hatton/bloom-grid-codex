@@ -1,3 +1,3 @@
-export function attachGlobalMenu(_root: HTMLElement) {
-  // placeholder for future menu
+export function attachGlobalMenu(root: HTMLElement): void {
+  void root; // placeholder for future menu
 }

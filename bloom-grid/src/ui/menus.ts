@@ -1,3 +1,3 @@
-export function attachCellMenu(_cell: HTMLElement) {
-  // placeholder for cell menu
+export function attachCellMenu(cell: HTMLElement): void {
+  void cell; // placeholder for cell menu
 }

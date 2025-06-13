@@ -1,6 +1,5 @@
 import type { GridState } from '../types';
 import { renderRow } from '../components/row';
-import { applyColumnStyles } from '../components/column';
 import { clearElement } from '../utils/dom';
 import { UndoRedoHistory } from '../state/history';
 
@@ -27,12 +26,24 @@ export class GridInstance {
     const body = document.createElement('div');
     body.className = 'body';
 
-    // apply column styles via first row
+    this.root.style.setProperty('--col-count', String(this.state.columns.length));
+    body.style.gridTemplateColumns = this.state.columns
+      .map((col) =>
+        col.widthMode === 'Manual' && col.width
+          ? `${col.width}%`
+          : 'minmax(30px, auto)'
+      )
+      .join(' ');
+    body.style.gridTemplateRows = this.state.rows
+      .map((row) =>
+        row.heightMode === 'Manual' && row.height
+          ? `${row.height}px`
+          : 'minmax(24px, auto)'
+      )
+      .join(' ');
+
     this.state.rows.forEach((row) => {
       const rowEl = renderRow(row);
-      Array.from(rowEl.children).forEach((cellEl, idx) => {
-        applyColumnStyles(cellEl as HTMLDivElement, this.state.columns[idx]);
-      });
       body.appendChild(rowEl);
     });
 

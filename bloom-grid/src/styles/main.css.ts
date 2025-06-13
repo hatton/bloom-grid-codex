@@ -5,11 +5,18 @@ export const bloomGridStyles = `
   height: 100%;
   border: 1px solid #ccc;
 }
+[data-bloom-grid-version="0"] .body {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(var(--col-count), minmax(30px, auto));
+  grid-auto-rows: minmax(24px, auto);
+  width: 100%;
+  height: 100%;
+}
 [data-bloom-grid-version="0"] .row {
-  display: flex;
+  display: contents;
 }
 [data-bloom-grid-version="0"] .cell {
-  flex: 1;
   border: 1px solid #ddd;
   padding: 2px;
   min-width: 30px;
